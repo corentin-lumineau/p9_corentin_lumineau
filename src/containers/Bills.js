@@ -2,6 +2,7 @@ import { ROUTES_PATH } from '../constants/routes.js'
 import { formatDate, formatStatus } from "../app/format.js"
 import Logout from "./Logout.js"
 
+
 export default class {
   constructor({ document, onNavigate, store, localStorage }) {
     this.document = document
@@ -23,7 +24,9 @@ export default class {
   handleClickIconEye = (icon) => {
     const billUrl = icon.getAttribute("data-bill-url")
     const imgWidth = Math.floor($('#modaleFile').width() * 0.5)
-    $('#modaleFile').find(".modal-body").html(`<div style='text-align: center;' class="bill-proof-container"><img width=${imgWidth} src=${billUrl} alt="Bill" /></div>`)
+    const modaleFile = document.getElementById("modaleFile")
+    const modaleBody = document.getElementById("modaleFile").querySelector(".modal-body");
+    modaleBody.innerHTML = `<div style='text-align: center;' class="bill-proof-container"><img width=${imgWidth} src=${billUrl} alt="Bill" /></div>`;
     $('#modaleFile').modal('show')
   }
 
@@ -53,6 +56,7 @@ export default class {
             }
           })
           console.log('length', bills.length)
+          console.log(bills)
         return bills
       })
     }

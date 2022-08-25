@@ -1,4 +1,5 @@
 import { ROUTES_PATH } from '../constants/routes.js'
+import { hideError, showError, validationFileFormat } from '../utils/utils.js'
 import Logout from "./Logout.js"
 
 export default class NewBill {
@@ -24,8 +25,9 @@ export default class NewBill {
     const email = JSON.parse(localStorage.getItem("user")).email
     formData.append('file', file)
     formData.append('email', email)
-
-    this.store
+    if(validationFileFormat(fileName)) { 
+       hideError(e.target); 
+      this.store
       .bills()
       .create({
         data: formData,
@@ -39,10 +41,15 @@ export default class NewBill {
         this.fileUrl = fileUrl
         this.fileName = fileName
       }).catch(error => console.error(error))
+     } 
+     else {
+      showError(e.target);
+    }
+  
   }
   handleSubmit = e => {
     e.preventDefault()
-    console.log('e.target.querySelector(`input[data-testid="datepicker"]`).value', e.target.querySelector(`input[data-testid="datepicker"]`).value)
+    /* console.log('e.target.querySelector(`input[data-testid="datepicker"]`).value', typeof(e.target.querySelector(`input[data-testid="datepicker"]`).value)) */
     const email = JSON.parse(localStorage.getItem("user")).email
     const bill = {
       email,

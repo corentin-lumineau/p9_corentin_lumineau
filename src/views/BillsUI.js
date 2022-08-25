@@ -3,6 +3,7 @@ import ErrorPage from "./ErrorPage.js"
 import LoadingPage from "./LoadingPage.js"
 
 import Actions from './Actions.js'
+import { descendingSortedHash } from '../utils/utils.js'
 
 const row = (bill) => {
   return (`
@@ -20,7 +21,7 @@ const row = (bill) => {
   }
 
 const rows = (data) => {
-  return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
+  return (data && data.length) ? descendingSortedHash(data).map(bill => row(bill)).join("") : ""
 }
 
 export default ({ data: bills, loading, error }) => {
@@ -59,7 +60,7 @@ export default ({ data: bills, loading, error }) => {
         <div id="data-table">
         <table id="example" class="table table-striped" style="width:100%">
           <thead>
-              <tr>
+              <tr data-testid="bill-line">
                 <th>Type</th>
                 <th>Nom</th>
                 <th>Date</th>

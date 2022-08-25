@@ -2,6 +2,17 @@
   width: 100%;
 }
 
+#column-justificatif .col-half[data-error]::after {
+  content: attr(data-error);
+  opacity: 0;
+  color: red;
+}
+
+#column-justificatif .col-half[data-error-visible = "true"]::after {
+  opacity: 1;
+}
+
+
 .col-half {
   margin:auto;
   width: 75%;
