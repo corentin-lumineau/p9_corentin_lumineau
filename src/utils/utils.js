@@ -8,12 +8,15 @@ export const descendingSortedHash = (hash) => {
 };
 
 export const validationFileFormat = (fileName) => {
-  const format = fileName.split(".")[1];
+  if (fileName != null) {
+    const format = fileName.split(".")[1];
   
-  if (format !== "jpg" && format !== "jpeg" && format !== "png") {
-    return false;
+    if (format !== "jpg" && format !== "jpeg" && format !== "png") {
+      return false;
+    }
+    return true;
   }
-  return true;
+
 };
 
 export function showError(data) {

@@ -64,8 +64,18 @@ export default class NewBill {
       fileName: this.fileName,
       status: 'pending'
     }
+
     this.updateBill(bill)
     this.onNavigate(ROUTES_PATH['Bills'])
+    
+/*     if(validationFileFormat(this.fileName)) {
+      this.updateBill(bill)
+      this.onNavigate(ROUTES_PATH['Bills'])
+    }
+    else {
+      e.preventDefault();
+    } */
+   
   }
 
   // not need to cover this function by tests
