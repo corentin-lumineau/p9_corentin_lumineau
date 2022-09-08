@@ -141,6 +141,8 @@ describe("Given I am connected as an employee", () => {
       router()
       window.onNavigate(ROUTES_PATH.Bills)
       await waitFor(() => screen.getByText("Mes notes de frais"))
+      expect(screen.getByText("Mes notes de frais")).toBeTruthy();
+      expect(screen.getByTestId("tbody")).toBeTruthy();
     })
   })
   describe("When an error occurs on API", () => {

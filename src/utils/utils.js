@@ -4,7 +4,7 @@ export const descendingSortedHash = (hash) => {
   hash.sort((a, b) => {
     return new Date(b.date) - new Date(a.date);
   });
-  return hash;
+  return hash; 
 };
 
 export const validationFileFormat = (fileName) => {

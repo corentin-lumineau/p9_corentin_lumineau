@@ -67,14 +67,6 @@ export default class NewBill {
 
     this.updateBill(bill)
     this.onNavigate(ROUTES_PATH['Bills'])
-    
-/*     if(validationFileFormat(this.fileName)) {
-      this.updateBill(bill)
-      this.onNavigate(ROUTES_PATH['Bills'])
-    }
-    else {
-      e.preventDefault();
-    } */
    
   }
 
