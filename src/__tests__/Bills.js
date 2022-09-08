@@ -46,7 +46,7 @@ describe("Given I am connected as an employee", () => {
   })
   
   describe("When I click on icon-eye", () => {
-    test("A modal should open", () => {
+    test("A modal should open", async () => {
 
       window.$ = jest.fn().mockImplementation(() => {
         return {
@@ -90,6 +90,8 @@ describe("Given I am connected as an employee", () => {
       eye.addEventListener("click", handleClickIconEye(eye)) 
       userEvent.click(eye);
       expect(handleClickIconEye).toHaveBeenCalled();
+      await waitFor(() => screen.getByText("Justificatif"))
+      expect(screen.getByText('Justificatif')).toBeTruthy();
     }) 
   })
 
@@ -127,6 +129,7 @@ describe("Given I am connected as an employee", () => {
       newBillButton.addEventListener("click", handleClickNewBill);
       userEvent.click(newBillButton);
       expect(handleClickNewBill).toHaveBeenCalled();
+      expect(screen.getByText("Envoyer une note de frais")).toBeTruthy();
     }) 
   }) 
 
